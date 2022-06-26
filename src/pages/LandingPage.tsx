@@ -1,12 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { Flex, Text, VStack, Link as ChakraLink, HStack } from '@chakra-ui/react';
 
 const LandingPage = () => {
   const CustomLink = ({ to, text }: { to: string; text: string }) => (
     <ChakraLink
-      href={to}
+      as={Link}
+      to={to}
       fontWeight={'bold'}
-      fontSize={'1.1rem'}
       _hover={{
         color: 'white',
       }}

@@ -9,10 +9,11 @@ const MainLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const location = useLocation();
 
   useEffect(() => {
-    setIsWithTopBar(
-      _.includes(['/face-tracking', '/image-tracking', '/image-compiler'], location.pathname)
-    );
-  }, []);
+    const lastSlash = location.pathname.split('/').pop();
+    const shouldWithTopBar = ['face-tracking', 'image-tracking', 'image-compiler'];
+
+    setIsWithTopBar(_.includes(shouldWithTopBar, lastSlash));
+  }, [location]);
 
   return (
     <Flex
