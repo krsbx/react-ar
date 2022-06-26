@@ -26,9 +26,9 @@ const LandingPage = () => {
           Looks like you open a wrong page, do you mean try to access other pages?
         </Text>
         <HStack gap={5} pt={5}>
-          <CustomLink to={'/face-tracking'} text={'Face Tracking'} />
-          <CustomLink to={'/image-tracking'} text={'Image Tracking'} />
-          <CustomLink to={'/image-compiler'} text={'Image Compiler'} />
+          <CustomLink to={'/react-ar/face-tracking'} text={'Face Tracking'} />
+          <CustomLink to={'/react-ar/image-tracking'} text={'Image Tracking'} />
+          <CustomLink to={'/react-ar/image-compiler'} text={'Image Compiler'} />
         </HStack>
       </VStack>
     </Flex>
