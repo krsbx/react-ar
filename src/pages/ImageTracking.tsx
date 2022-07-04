@@ -1,24 +1,11 @@
-import React, { useEffect, useRef } from 'react';
-import { AScene } from 'aframe';
+import React from 'react';
 import { Camera, GLTFModel, Plane, Assets, Item } from 'aframe-react-component';
-import { ImageTracking, MindAR } from 'mind-ar-react';
+import { MindAR } from 'mind-ar-react';
+import { ImageTracking } from 'mind-ar-react/dist/provider';
 import { Flex } from '@chakra-ui/react';
 import { rotationSettings, scaleSettings } from '../utils/constant';
 
 const ImageTrackingPage = () => {
-  const sceneRef = useRef<typeof AScene>(null);
-
-  useEffect(() => {
-    if (!sceneRef.current) return;
-    const arSystem = sceneRef.current.systems['mindar-image-system'];
-
-    return () => {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      arSystem?.stop();
-    };
-  }, [sceneRef.current]);
-
   return (
     <ImageTracking>
       <Flex zIndex={1} position={'relative'} width={'100%'} overflow={'hidden'}>
@@ -35,7 +22,6 @@ const ImageTrackingPage = () => {
           renderer="colorManagement: true, physicallyCorrectLights"
           orientationUI
           stats
-          ref={sceneRef}
         >
           <Assets>
             <img

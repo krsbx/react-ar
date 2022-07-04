@@ -1,5 +1,6 @@
 import React from 'react';
-import { FaceTracking, MindAR } from 'mind-ar-react';
+import { MindAR } from 'mind-ar-react';
+import { FaceTracking } from 'mind-ar-react/dist/provider';
 import { Camera, Assets, Item, GLTFModel } from 'aframe-react-component';
 import { Flex } from '@chakra-ui/react';
 
@@ -10,7 +11,6 @@ const FaceTrackingPage = () => {
         <MindAR.Scene
           mindARFace={{
             shouldFaceUser: true,
-            _positionZIndex: 2,
           }}
           colorSpace="sRGB"
           embedded

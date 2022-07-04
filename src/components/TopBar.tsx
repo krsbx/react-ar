@@ -1,10 +1,8 @@
 import React from 'react';
-import { Flex, HStack, Link as ChakraLink, Text, useMediaQuery } from '@chakra-ui/react';
+import { Flex, HStack, Link as ChakraLink, Text, useBreakpointValue } from '@chakra-ui/react';
 import { Link } from 'react-router-dom';
 
 const TopBar = () => {
-  const [isMd] = useMediaQuery(['(min-width: 48em)', '(min-width: 60em)']);
-
   const CustomLink = ({
     to,
     longText,
@@ -13,23 +11,27 @@ const TopBar = () => {
     to: string;
     longText: string;
     shortText?: string;
-  }) => (
-    <ChakraLink
-      as={Link}
-      to={to}
-      fontWeight={'bold'}
-      _hover={{
-        color: 'white',
-      }}
-      transition={'all 0.3s ease-in-out'}
-    >
-      <Text>{isMd ? longText : shortText ?? longText}</Text>
-    </ChakraLink>
-  );
+  }) => {
+    const variant = useBreakpointValue({ base: shortText, md: longText });
+
+    return (
+      <ChakraLink
+        as={Link}
+        to={to}
+        fontWeight={'bold'}
+        _hover={{
+          color: 'white',
+        }}
+        transition={'all 0.3s ease-in-out'}
+      >
+        <Text>{variant}</Text>
+      </ChakraLink>
+    );
+  };
 
   return (
     <Flex justifyContent={'center'} alignItems={'center'} w={'100%'} textAlign={'center'} pb={5}>
-      <HStack gap={isMd ? 6 : 4}>
+      <HStack gap={{ base: 4, md: 6 }}>
         <CustomLink
           to={'/react-ar/face-tracking'}
           longText={'Face Tracking'}
